@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shop_app_provider/Provider/cart.dart';
 import 'package:shop_app_provider/Provider/products.dart';
+import 'package:shop_app_provider/widgets/badge.dart';
 import 'package:shop_app_provider/widgets/products_grid.dart';
 
 // import 'package:shop_app_provider/widgets/product_items.dart';
@@ -42,8 +44,16 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
                     PopupMenuItem(
                       child: Text("Show All"),
                       value: FilterOptions.All,
-                    )
-                  ])
+                    ),
+                  ]),
+          Consumer<Cart>(
+            builder: (context, cart, ch) =>
+                Badge(child: ch, value: cart.itemCount.toString()),
+            child: IconButton(
+              onPressed: () {},
+              icon: Icon(Icons.shopping_cart),
+            ),
+          )
         ],
       ),
       body: ProductsGrid(_showFavoritesOnly),
