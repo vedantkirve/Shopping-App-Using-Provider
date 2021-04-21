@@ -4,13 +4,19 @@ import 'package:provider/provider.dart';
 import 'package:shop_app_provider/Provider/cart.dart';
 import 'package:shop_app_provider/Provider/products.dart';
 import 'package:shop_app_provider/screens/cart_screen.dart';
+import 'package:shop_app_provider/screens/edit_product_screen.dart';
+import 'package:shop_app_provider/screens/orders_screen.dart';
 
 import 'package:shop_app_provider/screens/product_detail_screen.dart';
 import 'package:shop_app_provider/screens/products_overview_screen.dart';
+import 'package:shop_app_provider/screens/user_products_screen.dart';
+import './screens/orders_screen.dart';
+import './Provider/orders.dart';
 
 void main() {
   runApp(MyApp());
 }
+//module 9 done
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -23,7 +29,10 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider(
           create: (context) => Cart(),
-        )
+        ),
+        ChangeNotifierProvider(
+          create: (context) => Orders(),
+        ),
       ],
       child: MaterialApp(
         title: 'My Shop',
@@ -43,7 +52,10 @@ class MyApp extends StatelessWidget {
         home: ProductOverviewScreen(),
         routes: {
           ProductDetailScreen.routeName: (context) => ProductDetailScreen(),
-          CartScreeen.routeName: (context) => CartScreeen()
+          CartScreen.routeName: (context) => CartScreen(),
+          OrdersScreen.routeName: (context) => OrdersScreen(),
+          UserProductScreen.routeaName: (context) => UserProductScreen(),
+          EditProductScreen.routeName: (context) => EditProductScreen()
         },
       ),
     );
